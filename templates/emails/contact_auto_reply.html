@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank you for contacting DashSteamVAP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin: -30px -30px 30px -30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .message-details {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #1a1a1a;
+        }
+        .contact-info {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .contact-info h3 {
+            margin-top: 0;
+            color: #1a1a1a;
+        }
+        .social-links {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 15px;
+            background-color: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .social-links a:hover {
+            background-color: #333;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚗 Thank You!</h1>
+            <p>DashSteamVAP - Automotive Excellence</p>
+        </div>
+
+        <div class="content">
+            <p>Dear <strong>{{ contact.name }}</strong>,</p>
+            
+            <p>Thank you for reaching out to <strong>DashSteamVAP</strong>! We have successfully received your message and appreciate you taking the time to contact us.</p>
+
+            <div class="message-details">
+                <h3>📝 Your Message Details:</h3>
+                <p><strong>Subject:</strong> {{ contact.subject|default:"General Inquiry" }}</p>
+                <p><strong>Message:</strong> {{ contact.message|truncatewords:30 }}</p>
+                <p><strong>Submitted:</strong> {{ contact.created_at|date:"F j, Y, g:i a" }}</p>
+            </div>
+
+            <div class="highlight">
+                <strong>⏰ Response Time:</strong> We typically respond to all inquiries within <strong>24-48 hours</strong> during business days (Monday - Friday, 9:00 AM - 6:00 PM).
+            </div>
+
+            <p>Our team is currently reviewing your message and will get back to you as soon as possible with a detailed response.</p>
+        </div>
+
+        <div class="contact-info">
+            <h3>📞 Need Immediate Assistance?</h3>
+            <p>If your inquiry is urgent, you can reach us directly:</p>
+            <ul>
+                <li><strong>Phone:</strong> +91 7488928997</li>
+                <li><strong>Email:</strong> vapddashsteam@gmail.com</li>
+                <li><strong>Address:</strong> Basudhara Complex, South Collectoriate Road, Buxar, Bihar, 802103</li>
+            </ul>
+        </div>
+
+        <div class="social-links">
+            <h3>🔗 Connect With Us</h3>
+            <a href="https://www.facebook.com/DashSteamVAP" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/dashsteamvap/" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/company/dashsteamvap/" target="_blank">LinkedIn</a>
+            <a href="https://wa.me/7488928997" target="_blank">WhatsApp</a>
+        </div>
+
+        <div class="footer">
+            <p>This is an automated confirmation email from DashSteamVAP.</p>
+            <p>© 2025 DashSteamVAP. All rights reserved.</p>
+            <p>Reference ID: {{ contact.id }}</p>
+        </div>
+    </div>
+</body>
+</html> 

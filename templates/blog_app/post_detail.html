@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>By {{ post.author }} | {{ post.published_at|date:'Y-m-d' }}</p>
+{% if post.featured_image %}
+  <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" style="max-width: 400px;"/>
+{% endif %}
+<div>{{ post.content|safe }}</div>
+<a href="/">Back to posts</a>
+{% endblock %} 
