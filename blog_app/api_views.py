@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Post, Category, Comment, Contact
 from .serializers import PostSerializer, CategorySerializer, CommentSerializer, ContactSerializer, RecentPostSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('-published_at', '-created_at')
@@ -39,8 +40,9 @@ class ContactViewSet(viewsets.ModelViewSet):
 
 # Recent posts for homepage
 class RecentPostListView(generics.ListAPIView):
-    queryset = Post.objects.filter(status='published').order_by('-published_at', '-created_at')[:4]
+    queryset = Post.objects.filter(status='published').order_by('-published_at', '-created_at')
     serializer_class = RecentPostSerializer
+    pagination_class = None  # Disable pagination for recent posts
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
@@ -51,6 +53,8 @@ class RecentPostListView(generics.ListAPIView):
 class AllPostListView(generics.ListAPIView):
     queryset = Post.objects.filter(status='published').order_by('-published_at', '-created_at')
     serializer_class = PostSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['category__name']
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
